@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>축하합니다 · 결혼 21주년</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fbf6ee;
+    --paper:#fffaf3;
+    --blush:#e8c5c0;
+    --rose:#b35a52;
+    --deep:#7c352f;
+    --gold:#c19a5b;
+    --gold-soft:#e3cda0;
+    --ink:#4a322c;
+    --leaf:#9aab8a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    font-family:'Gowun Batang',serif;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(232,197,192,.35), transparent 42%),
+      radial-gradient(circle at 85% 80%, rgba(193,154,91,.22), transparent 45%),
+      linear-gradient(150deg,#f4e7d8 0%, #fbf6ee 45%, #f6ece0 100%);
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 18px;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* 떠다니는 꽃잎 */
+  .petal{
+    position:fixed;
+    top:-40px;
+    font-size:18px;
+    color:var(--blush);
+    opacity:0;
+    pointer-events:none;
+    animation:fall linear infinite;
+    z-index:0;
+  }
+  @keyframes fall{
+    0%{transform:translateY(-40px) rotate(0deg);opacity:0;}
+    10%{opacity:.8;}
+    90%{opacity:.8;}
+    100%{transform:translateY(105vh) rotate(360deg);opacity:0;}
+  }
+
+  .card{
+    position:relative;
+    z-index:2;
+    width:min(620px,100%);
+    background:var(--paper);
+    border-radius:6px;
+    padding:60px 46px 54px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.7) inset,
+      0 30px 70px -28px rgba(124,53,47,.40),
+      0 8px 24px -12px rgba(124,53,47,.25);
+    text-align:center;
+    border:1px solid rgba(193,154,91,.28);
+  }
+  /* 안쪽 금테 */
+  .card::before{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border:1px solid rgba(193,154,91,.45);
+    border-radius:3px;
+    pointer-events:none;
+  }
+  .card::after{
+    content:"";
+    position:absolute;
+    inset:18px;
+    border:1px solid rgba(193,154,91,.18);
+    border-radius:2px;
+    pointer-events:none;
+  }
+
+  .reveal{opacity:0;transform:translateY(16px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes rise{to{opacity:1;transform:translateY(0);}}
+
+  .ornament{
+    font-family:'Cormorant Garamond',serif;
+    color:var(--gold);
+    letter-spacing:.5em;
+    font-size:13px;
+    margin-bottom:6px;
+    animation-delay:.1s;
+  }
+  .ornament .line{
+    display:inline-block;
+    width:40px;height:1px;
+    background:var(--gold);
+    vertical-align:middle;
+    margin:0 14px;
+    opacity:.7;
+  }
+
+  .eyebrow{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:20px;
+    color:var(--rose);
+    margin-bottom:18px;
+    animation-delay:.25s;
+  }
+
+  .years{
+    position:relative;
+    margin:8px 0 4px;
+    animation-delay:.4s;
+  }
+  .years .num{
+    font-family:'Nanum Myeongjo',serif;
+    font-weight:800;
+    font-size:118px;
+    line-height:1;
+    background:linear-gradient(160deg,var(--rose),var(--deep) 60%,var(--gold));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-shadow:0 6px 24px rgba(124,53,47,.12);
+  }
+  .years .label{
+    display:block;
+    margin-top:2px;
+    font-family:'Nanum Myeongjo',serif;
+    font-weight:700;
+    letter-spacing:.45em;
+    font-size:18px;
+    color:var(--deep);
+    padding-left:.45em;
+  }
+
+  .title{
+    font-family:'Nanum Myeongjo',serif;
+    font-weight:800;
+    font-size:30px;
+    color:var(--ink);
+    margin:26px 0 6px;
+    line-height:1.45;
+    animation-delay:.55s;
+  }
+  .title .hl{color:var(--rose);}
+
+  .date{
+    font-family:'Cormorant Garamond',serif;
+    font-size:17px;
+    letter-spacing:.18em;
+    color:var(--gold);
+    margin-bottom:24px;
+    animation-delay:.7s;
+  }
+
+  .divider{
+    display:flex;align-items:center;justify-content:center;
+    gap:12px;margin:0 auto 24px;
+    color:var(--blush);
+    animation-delay:.8s;
+  }
+  .divider span{height:1px;width:64px;background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);}
+  .divider .heart{color:var(--rose);font-size:15px;}
+
+  .message{
+    font-size:17px;
+    line-height:2.05;
+    color:var(--ink);
+    max-width:430px;
+    margin:0 auto 30px;
+    animation-delay:.95s;
+  }
+  .message p{margin-bottom:14px;}
+  .message .soft{color:var(--rose);}
+
+  .signature{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:19px;
+    color:var(--deep);
+    animation-delay:1.1s;
+  }
+  .signature .from{
+    display:block;
+    font-family:'Gowun Batang',serif;
+    font-style:normal;
+    font-size:15px;
+    letter-spacing:.1em;
+    color:var(--gold);
+    margin-top:4px;
+  }
+
+  .seal{
+    margin-top:28px;
+    display:inline-flex;
+    align-items:center;justify-content:center;
+    width:70px;height:70px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #c96a5f, var(--deep));
+    color:#fbe7d8;
+    font-family:'Nanum Myeongjo',serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.05em;
+    box-shadow:0 8px 18px -6px rgba(124,53,47,.5);
+    animation-delay:1.25s;
+    transition:transform .4s ease;
+  }
+  .seal:hover{transform:rotate(-8deg) scale(1.06);}
+
+  @media (max-width:520px){
+    .card{padding:48px 26px 42px;}
+    .years .num{font-size:88px;}
+    .title{font-size:24px;}
+    .message{font-size:16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="ornament reveal"><span class="line"></span>EST. 2005<span class="line"></span></div>
+  <div class="eyebrow reveal">Happy Anniversary</div>
+
+  <div class="years reveal">
+    <span class="num">21</span>
+    <span class="label">스물한 번째 봄</span>
+  </div>
+
+  <h1 class="title reveal">엄마 아빠의 결혼<span class="hl">기념일</span>을<br>축하드려요</h1>
+  <div class="date reveal">2005. 05. 28 &nbsp;—&nbsp; 2026. 05. 28</div>
+
+  <div class="divider reveal"><span></span><span class="heart">❤</span><span></span></div>
+
+  <div class="message reveal">
+    <p>두 분이 함께한 <span class="soft">스물한 번의 봄</span> 동안,<br>서로를 아껴온 그 마음 덕분에<br>지금의 우리가 있어요.</p>
+    <p>늘 사랑으로 채워주셔서 감사해요.<br>앞으로의 날들도 오늘처럼<br>따뜻하고 행복하시길 바랍니다.</p>
+  </div>
+
+  <div class="signature reveal">
+    With all my love,
+    <span class="from">사랑하는 자녀 드림</span>
+  </div>
+
+  <div class="seal reveal">21<br>YEARS</div>
+</div>
+
+<script>
+  // 꽃잎 생성
+  const petals = ['❀','✿','❁','❀','♡'];
+  const colors = ['#e8c5c0','#c19a5b','#d99a8f','#b35a52'];
+  for(let i=0;i<14;i++){
+    const p=document.createElement('div');
+    p.className='petal';
+    p.textContent=petals[Math.floor(Math.random()*petals.length)];
+    p.style.left=Math.random()*100+'vw';
+    p.style.color=colors[Math.floor(Math.random()*colors.length)];
+    p.style.fontSize=(12+Math.random()*16)+'px';
+    p.style.animationDuration=(9+Math.random()*9)+'s';
+    p.style.animationDelay=(Math.random()*10)+'s';
+    document.body.appendChild(p);
+  }
+</script>
+</body>
+</html>
